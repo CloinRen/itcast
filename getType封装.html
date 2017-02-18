@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function getType(obj) {
+        // 如果obj的值 为 null 或者 undefined
+        // 就转换成字符串，返回即可
+        if(obj == null){
+            return obj + '';
+        }
+        // 如果obj 为基本数据类型，就返回 typeof 的返回值
+        if (typeof obj !== 'object'){
+            return typeof obj;
+        }
+        // 如果 obj 为 复合数据类型
+        // 借调Object.prototype.toString方法获取其小写形式的构造函数名字
+        else {
+            return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+        }
+    }
+
+   /* console.log(getType([]));
+    console.log(getType(new Date));
+    console.log(getType(new Error()));
+    console.log(getType(1));
+    console.log(getType('1'));
+    console.log(getType(false));
+    console.log(getType(function() {}));*/
+
+
+    //判断伪数组对象
+    /*
+     * 语法：isLikeArray(obj)
+     * 功能：判断obj是否为伪数组，如果是返回true，否则返回false
+     * 实现思路
+     * 1.排除window对象和函数对象以及真数组，返回值为false
+     * 获取length属性值
+     * 如果为0直接返回true
+     * 如果>0并且具有length-1索引值，此时返回true，否则返回false
+     * */
+    function isLikeArray(obj){
+        //过滤null
+        if(obj==null){
+            return false;
+        }
+        var  type=getType(obj),//获取obj
+                //如果obj不是对象类型，返回值为false
+                //如果obj是对象，但是没有length属性，返回值为false
+        //如果obj是对象，并且具有length属性，返回值为obj.length
+                length = typeof obj === 'object' && 'length' in obj && obj.length;
+
+
+        //排除window 函数 真数组
+        if(type=='array'||type=='function'||type=='window'){
+           return false;
+        }
+        return length===0 || //如果length值为0就返回true
+                        //或者length类型为number，并且值大于0，并且具有length-1索引，返回true
+                typeof length==='number'&&length>0&&(length-1) in obj;
+    }
+    console.log(isLikeArray([])); // false
+    console.log(isLikeArray(window));
+    console.log(isLikeArray(function() {}));
+    console.log(isLikeArray({length: "1"})); // false
+    console.log(isLikeArray({length: 6, 4: "name"})); //false
+    console.log(isLikeArray({length: 2, 1: "name", 0: 'age'})); // true
+    console.log(isLikeArray({length: 5, 4: "name"})); // true
+    console.log(isLikeArray(null));
+    console.log(isLikeArray(1));
+    console.log(isLikeArray(undefined));
+
+
+</script>
+</body>
+</html>

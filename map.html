@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr=[1,2,3];
+    var newArr=arr.map(function (v,i) {
+        return v +i;
+    });
+    console.log(newArr);
+    //语法：var newArr=map(arr,callback);
+    //功能：遍历arr数组，然后对数组元素进行相关操作，然后给回调函数指定返回值，作为新数组的元素
+    //该方法的返回值是一个新数组
+    function map(arr,callback){
+        //临时存储callback执行后的返回值
+        var value;
+        //定义新数组
+        var ret=[];
+        var i= 0,l=arr.length;
+        for(,i< l;i++){
+            value=callback(arr[i],i);
+            if(value!=null){
+                ret.push(value);
+            }
+        }
+        //返回新数组对象
+        return ret;
+    }
+</script>
+</body>
+</html>

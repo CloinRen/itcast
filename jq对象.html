@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="js/jquery-1.12.4.min.js"></script>
+<body>
+<div></div>
+<script>
+var jq=$('div');
+//jq对象本质
+/*
+* 1.通过$函数的返回值来获取jq对象
+* 2.指定$函数的参数来获取dom元素，是以伪数组对象的方式来存储获取到的dom元素
+* 最终将dom存储在jq对象。也就是说，jq对象本质就是用来存储指定选择器获取到dom元素的伪数组对象
+* 3.本质就是伪数组对象，功能就是存储获取到的dom元素；它的原型对象用来存储操作dom元素的方法
+*
+*
+* */
+    console.log(jq);
+</script>
+</body>
+</html>

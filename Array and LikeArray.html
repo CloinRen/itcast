@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    对象类型的确定
+//以该对象的构造函数的小写方式来描述其类型
+    //判断数组类型array
+    //Object.prototype.toString.call(array).slice(8,-1).toLowerCase();
+
+    //判断伪数组类型
+    //排除window对象以及函数对象，他们也有length属性值，但是含义和数组的length属性不同
+    //数组和伪数组length属性的含义为元素的个数，window对象的length属性含义是表达页面中iframe标签的个数
+    //函数对象的length属性含义是形参的个数
+    //满足以下至少一个条件就为伪数组
+    //该对象length属性值为0（没有任何元素）
+    //如果length属性值为number类型，并且在对象含有索引length-1，并且值>0。
+
+
+
+    //获取内置对象的类型
+    //1.语法：getType(obj);
+    //2.功能：获取传入参数的类型，返回为string类型，表示参数的类型
+    //3.实现思路：
+       /*
+       * 如果obj为null，返回值为字符串‘null’
+       * 如果obj为undefined，返回值为字符串‘undefined’
+       * 如果obj为基本数据类型，返回值为typeof obj
+       * 如果obj为复合数据类型（内置对象），使用Object.prototype.toString来获取该对象的构造函数的名字
+       * 以其小写形式作为该函数的返回值
+       * */
+</script>
+</body>
+</html>
